@@ -1,4 +1,4 @@
-package com.example.eatfood.Models;
+package com.client.news_client.Models;
 
 import java.io.Serializable;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 public class NewsApiResponse implements Serializable {
     String status;
      int totalResults;
-     List<NewsHeadlines> articles;
+    List<NewsHeadlines> articles;
 
     public String getStatus() {
         return status;
@@ -25,6 +25,7 @@ public class NewsApiResponse implements Serializable {
     }
 
     public List<NewsHeadlines> getArticles() {
+
         return articles;
     }
 
