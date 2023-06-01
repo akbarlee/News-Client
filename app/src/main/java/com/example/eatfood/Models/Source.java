@@ -1,4 +1,4 @@
-package com.client.news_client.Models;
+package com.example.eatfood.Models;
 
 import java.io.Serializable;
 

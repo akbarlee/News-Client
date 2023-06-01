@@ -1,4 +1,4 @@
-package com.client.news_client;
+package com.example.eatfood;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,20 +9,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.Toast;
 
-import com.client.news_client.Models.NewsApiResponse;
-import com.client.news_client.Models.NewsHeadlines;
-import com.example.eatfood.R;
+
+import com.example.eatfood.Models.NewsApiResponse;
+import com.example.eatfood.Models.NewsHeadlines;
 
 import java.util.List;
-
 
 public class main_page extends MainActivity implements SelectListener , View.OnClickListener {
     private Toolbar mToolbar;
@@ -62,29 +62,20 @@ public class main_page extends MainActivity implements SelectListener , View.OnC
 
         RequestManager manager = new RequestManager(this);
         manager.getNewsHeadlines(listener, "general",null);
-        Log.i("Request Manager" , "manager " + manager);
 
     }
     private  final OnFetchDataListener<NewsApiResponse> listener = new OnFetchDataListener<NewsApiResponse>() {
         @Override
         public void onFetchData(List<NewsHeadlines> list, String message) {
-            // log the message parameter
-            Log.d("onFetchData", "News list: " + list);
-            if(list.isEmpty()) {
-                Toast.makeText(main_page.this, "Məlumat tapılmadı", Toast.LENGTH_SHORT).show();
-                // log the empty list case
-                Log.w("onFetchData", "list is empty");
-            }
-            else {
-                // log the list size and the first item
-                Log.i("onFetchData", "list size: " + list.size());
-                Log.i("onFetchData", "first item: " + list.get(0));
-                showNews(list);
-                dialog.dismiss();
+              if(list.isEmpty()) {
+                  Toast.makeText(main_page.this, "Məlumat tapılmadı", Toast.LENGTH_SHORT).show();
+              }
+              else {
+                  showNews(list);
+                  dialog.dismiss();
+              }
 
-            }
         }
-
 
         @Override
         public void onError(String message) {

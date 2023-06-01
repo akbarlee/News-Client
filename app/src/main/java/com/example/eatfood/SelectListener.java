@@ -1,7 +1,6 @@
-package com.client.news_client;
+package com.example.eatfood;
 
-
-import com.client.news_client.Models.NewsHeadlines;
+import com.example.eatfood.Models.NewsHeadlines;
 
 public interface SelectListener {
     void OnNewsClicked(NewsHeadlines headlines);
