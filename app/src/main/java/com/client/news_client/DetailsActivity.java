@@ -1,4 +1,4 @@
-package com.example.eatfood;
+package  com.client.news_client;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.eatfood.Models.NewsHeadlines;
+
+import com.client.news_client.Models.NewsHeadlines;
+import com.example.eatfood.R;
 import com.squareup.picasso.Picasso;
 
 public class DetailsActivity extends AppCompatActivity {
