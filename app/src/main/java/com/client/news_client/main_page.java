@@ -65,7 +65,7 @@ public class main_page extends MainActivity implements SelectListener , View.OnC
         Log.i("Request Manager" , "manager " + manager);
 
     }
-    private  final OnFetchDataListener<NewsApiResponse> listener = new OnFetchDataListener<NewsApiResponse>() {
+    private  final OnFetchDataListener<NewsHeadlines> listener = new OnFetchDataListener<NewsHeadlines>() {
         @Override
         public void onFetchData(List<NewsHeadlines> list, String message) {
             // log the message parameter
@@ -78,7 +78,7 @@ public class main_page extends MainActivity implements SelectListener , View.OnC
             else {
                 // log the list size and the first item
                 Log.i("onFetchData", "list size: " + list.size());
-                Log.i("onFetchData", "first item: " + list.get(0));
+                Log.d("onFetchData", "List content: " + list.toString());
                 showNews(list);
                 dialog.dismiss();
 
@@ -93,7 +93,7 @@ public class main_page extends MainActivity implements SelectListener , View.OnC
     };
 
     private void showNews(List<NewsHeadlines> list) {
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_main);
+        recyclerView = findViewById(R.id.recycler_main);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this ,1));
         adapter = new CustomAdapter(this , list , this);

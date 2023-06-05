@@ -1,6 +1,5 @@
 package com.client.news_client;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -43,19 +42,18 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
      //   ResponseFilling(newsApiResponse);
-        NewsHeadlines newsHeadlines = headlinesList.get(position);
-        Log.i("onBindViewHolder" , "NewsHeadlines test " + newsHeadlines);
-        holder.text_title.setText((newsHeadlines.getTitle()));
-        Log.i("onBindViewHolder" , "NewsHeadlines getTitle test " + newsHeadlines.getTitle());
-        holder.text_source.setText(newsHeadlines.getSource().getName());
 
-        if(newsHeadlines.getUrlToImage()!=null) {
-            Picasso.get().load(newsHeadlines.getUrlToImage()).into(holder.img_headline);
+
+        holder.text_title.setText((headlinesList.get(position).getTitle()));
+        holder.text_source.setText(headlinesList.get(position).getSource().getName());
+
+        if(headlinesList.get(position).getUrlToImage()!=null) {
+            Picasso.get().load(headlinesList.get(position).getUrlToImage()).into(holder.img_headline);
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() { // use itemView instead of cardView
             @Override
             public void onClick(View view) {
-                listener.OnNewsClicked(newsHeadlines); // use the news headlines object directly
+                listener.OnNewsClicked((NewsHeadlines) headlinesList); // use the news headlines object directly
             }
         });
     }

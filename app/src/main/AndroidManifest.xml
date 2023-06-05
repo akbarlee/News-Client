@@ -16,15 +16,15 @@
 
 
         <activity
-            android:name=".DetailsActivity"
+            android:name="com.client.news_client.DetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".headline_list_items"
+            android:name="com.client.news_client.headline_list_items"
             android:exported="false" />
 
 
         <activity
-            android:name=".main_page"
+            android:name="com.client.news_client.main_page"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
