@@ -5,7 +5,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.client.news_client.Models.NewsApiResponse;
-import com.client.news_client.Models.NewsHeadlines;
+
 
 import com.google.gson.Gson;
 
@@ -22,9 +22,9 @@ import retrofit2.http.Query;
 
 public class RequestManager  {
     Context context;
-    CustomAdapter customAdapter;
+
     Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.6:8080/")
+            .baseUrl("http://192.168.1.4:8080/")
             .addConverterFactory(GsonConverterFactory.create( new Gson()))
             .build();
     // Retrofitin logunu log icinde gormek uchun
@@ -95,7 +95,7 @@ public class RequestManager  {
 
     public  interface  CallNewsApi {
 
-        @GET ("news") // GET  Burdaki top-headlinesdi
+        @GET ("news/1") // GET  Burdaki top-headlinesdi
         Call<List<NewsApiResponse>> callHeadlines(
                @Query("country") String country ,
                @Query("category") String category ,
