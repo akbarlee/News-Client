@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".DetailsActivity">
+    tools:context="com.client.news_client.DetailsActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -33,7 +33,7 @@
                         android:id="@+id/text_detail_title"
                         android:textStyle="bold"
                         android:textSize="26sp"
-                        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                        android:textColor="@color/fbutton_color_green_sea"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         </TextView>
@@ -41,7 +41,7 @@
                     android:layout_marginTop="8dp"
                     android:id="@+id/img_detail_news"
                     android:layout_width="match_parent"
-                    android:src="@drawable/not_available"
+                    app:srcCompat="@drawable/not_available"
                     android:scaleType="fitXY"
                     android:layout_height="250dp">
 
@@ -55,7 +55,7 @@
                     </TextView>
                 <TextView
                     android:textSize="16sp"
-                    android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                    android:textColor="@color/fbutton_color_sun_flower"
                     android:id="@+id/text_detail_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -71,7 +71,7 @@
             <TextView
                 android:id="@+id/text_detail_detail"
                 android:textSize="22sp"
-                android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                android:textColor="@color/fbutton_color_green_sea"
                 android:layout_marginTop="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -83,7 +83,7 @@
                         android:id="@+id/text_detail_content"
                         android:maxLines="100"
 
-                        android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                        android:textColor="@color/purple_700"
                         android:layout_marginTop="8dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">

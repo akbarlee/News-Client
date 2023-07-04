@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.client.news_client.Models.NewsApiResponse;
 import com.client.news_client.Models.NewsHeadlines;
 
+import com.client.news_client.Models.Source;
 import com.example.eatfood.R;
 import com.squareup.picasso.Picasso;
 
@@ -19,18 +19,15 @@ import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
     private Context context;
-    private List<NewsHeadlines> headlinesList; // make sure the list type is NewsHeadlines
+    private List<NewsHeadlines> headlinesList;
     private SelectListener listener;
 
 
-    public CustomAdapter(Context context, List<NewsHeadlines> headlinesList, SelectListener listener) {
+
+    public CustomAdapter(Context context, List<NewsHeadlines> headlinesList, SelectListener listener ) {
         this.context = context;
         this.headlinesList = headlinesList;
         this.listener = listener;
-    }
-    public void ResponseFilling(NewsApiResponse newsApiResponse) { // change the method to take a NewsApiResponse parameter
-        List<NewsHeadlines> articles = newsApiResponse.getArticles(); // get the list of articles from the news response
-        headlinesList.addAll(articles); // add all the articles to the headlines list
     }
 
     @NonNull
@@ -41,22 +38,28 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
-     //   ResponseFilling(newsApiResponse);
+        Log.i("CustomAdapter", "Holder " + holder);
+        Log.i("CustomAdapter", "Position " + position);
 
 
-        holder.text_title.setText((headlinesList.get(position).getTitle()));
-        holder.text_source.setText(headlinesList.get(position).getSource().getName());
+            NewsHeadlines headlines = headlinesList.get(position);
+            holder.text_title.setText((headlines.getTitle()));
+       
 
-        if(headlinesList.get(position).getUrlToImage()!=null) {
-            Picasso.get().load(headlinesList.get(position).getUrlToImage()).into(holder.img_headline);
+            Log.i("For test", "Source " + headlinesList.toString());
+
+
+                holder.text_source.setText(headlines.getSource().getName());
+
+                Picasso.get().load(headlinesList.get(position).getUrlToImage()).into(holder.img_headline);
+
+            holder.cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.OnNewsClicked(headlines);
+                }
+            });
         }
-        holder.itemView.setOnClickListener(new View.OnClickListener() { // use itemView instead of cardView
-            @Override
-            public void onClick(View view) {
-                listener.OnNewsClicked((NewsHeadlines) headlinesList); // use the news headlines object directly
-            }
-        });
-    }
 
     @Override
     public int getItemCount() {

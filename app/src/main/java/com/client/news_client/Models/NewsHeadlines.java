@@ -1,16 +1,68 @@
 package com.client.news_client.Models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class NewsHeadlines implements Serializable {
-    Source source = null;
+    @SerializedName("source")
+    @Expose
+    Source source ;
+
+    @SerializedName("author")
+    @Expose
     String author = "";
+    @SerializedName("title")
+    @Expose
     String title = "";
+    @SerializedName("description")
+    @Expose
     String description = "";
+    @SerializedName("url")
+    @Expose
     String url = "";
+    @SerializedName("urlToImage")
+    @Expose
     String urlToImage = "";
+    @SerializedName("publishedAt")
+    @Expose
     String publishedAt = "";
+    @SerializedName("content")
+    @Expose
     String content = "";
+
+    @Override
+    public String toString() {
+        return "NewsHeadlines{" +
+                "source=" + source +
+                ", author='" + author + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", url='" + url + '\'' +
+                ", urlToImage='" + urlToImage + '\'' +
+                ", publishedAt='" + publishedAt + '\'' +
+                ", content='" + content + '\'' +
+                '}';
+    }
+
+    public NewsHeadlines(Source source,
+                         String author,
+                         String title,
+                         String description,
+                         String url,
+                         String urlToImage,
+                         String publishedAt,
+                         String content) {
+        this.source = source;
+        this.author = author;
+        this.title = title;
+        this.description = description;
+        this.url = url;
+        this.urlToImage = urlToImage;
+        this.publishedAt = publishedAt;
+        this.content = content;
+    }
 
     public Source getSource() {
         return source;

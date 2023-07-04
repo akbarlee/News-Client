@@ -1,11 +1,5 @@
 package com.client.news_client;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,8 +8,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.SearchView;
 import android.widget.Toast;
+
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.MenuItemCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.client.news_client.Models.NewsApiResponse;
 import com.client.news_client.Models.NewsHeadlines;
@@ -68,18 +67,19 @@ public class main_page extends MainActivity implements SelectListener , View.OnC
     private  final OnFetchDataListener<NewsHeadlines> listener = new OnFetchDataListener<NewsHeadlines>() {
         @Override
         public void onFetchData(List<NewsHeadlines> list, String message) {
-            // log the message parameter
-            Log.d("onFetchData", "News list: " + list);
+
+
             if(list.isEmpty()) {
                 Toast.makeText(main_page.this, "Məlumat tapılmadı", Toast.LENGTH_SHORT).show();
                 // log the empty list case
                 Log.w("onFetchData", "list is empty");
             }
             else {
-                // log the list size and the first item
+
+                Log.i("onFetchData", "News list: " + list); // Source Null
                 Log.i("onFetchData", "list size: " + list.size());
-                Log.d("onFetchData", "List content: " + list.toString());
-                showNews(list);
+
+             showNews(list);
                 dialog.dismiss();
 
             }
@@ -93,7 +93,7 @@ public class main_page extends MainActivity implements SelectListener , View.OnC
     };
 
     private void showNews(List<NewsHeadlines> list) {
-        recyclerView = findViewById(R.id.recycler_main);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_main);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this ,1));
         adapter = new CustomAdapter(this , list , this);
@@ -132,7 +132,7 @@ public class main_page extends MainActivity implements SelectListener , View.OnC
         });
 
         menuItem = menu.findItem(R.id.app_bar_search);
-        SearchView searchView = (SearchView) menuItem.getActionView();
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
         searchView.setQueryHint("Type here to search");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

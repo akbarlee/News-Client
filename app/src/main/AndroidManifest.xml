@@ -17,7 +17,7 @@
 
         <activity
             android:name="com.client.news_client.DetailsActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name="com.client.news_client.headline_list_items"
             android:exported="false" />
